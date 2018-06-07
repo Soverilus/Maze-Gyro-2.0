@@ -6,8 +6,8 @@ public class MapGenScript : MonoBehaviour {
     public Texture2D mapSpawnImage;
     public GameObject wallObj;
     public GameObject trapObj;
-    public GameObject enemyObj;
     public GameObject winObj;
+    public GameObject backgroundObj;
     GameObject playerObj;
 
     void Start() {
@@ -26,14 +26,14 @@ public class MapGenScript : MonoBehaviour {
         for (int w = 0; w < mapSpawnImage.width; w++) {
             for (int h = 0; h < mapSpawnImage.height; h++) {
                 Vector3 placementPos = new Vector3(w * wallSize.x, h * wallSize.y - mapSpawnImage.height, 0);
+                if (w == mapSpawnImage.width / 2 && h == mapSpawnImage.height / 2) {
+                    //PlaceObject(placementPos, backgroundObj);
+                }
                 if (mapSpawnImage.GetPixel(w, h) == Color.black) {
                     PlaceObject(placementPos, wallObj);
                 }
                 else if (mapSpawnImage.GetPixel(w, h) == Color.red) {
                     PlaceObject(placementPos, trapObj);
-                }
-                else if (mapSpawnImage.GetPixel(w, h) == Color.magenta) {
-                    //PlaceObject(placementPos, enemyObj);
                 }
                 else if (mapSpawnImage.GetPixel(w, h) == Color.green) {
                     //PlaceObject(placementPos, winObj);

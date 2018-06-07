@@ -10,24 +10,30 @@ public class MovementScript : MonoBehaviour {
     public float velMult;
     public float sensitivity;
 
-	void Start () {
+    void Start() {
         playerRB = GetComponent<Rigidbody2D>();
-	}
-	
-	void Update () {
+    }
 
-	}
+    void Update() {
+
+    }
 
     private void FixedUpdate() {
+        PlayerMove();
+    }
+
+    private void PlayerMove() {
+        //moves the player based on tilt of android, or, if no accelerometer exists, uses keyboard or controller controls. multiplies movement and clamps to a maximum.
         //moveInputRaw = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (SystemInfo.supportsAccelerometer) {
-            moveInput = new Vector2(Mathf.Clamp(Input.acceleration.x*sensitivity,-1, 1), Mathf.Clamp(Input.acceleration.y*sensitivity, -1, 1));
-        } else {
+            moveInput = new Vector2(Mathf.Clamp(Input.acceleration.x * sensitivity, -1, 1), Mathf.Clamp(Input.acceleration.y * sensitivity, -1, 1));
+        }
+        else {
             moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
-            playerRB.AddForce(moveInput * velMult);
+        playerRB.AddForce(moveInput * velMult);
         if (playerRB.velocity.magnitude > maxVel) {
-            playerRB.AddForce(playerRB.velocity.normalized *- velMult);
+            playerRB.AddForce(playerRB.velocity.normalized * -velMult);
         }
     }
 }
