@@ -5,7 +5,6 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour {
     public GameObject targetObject;
     Vector3 targetPos;
-
     void Start() {
         
     }
