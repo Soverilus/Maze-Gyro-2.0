@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class MapGenScript : MonoBehaviour {
     public Texture2D mapSpawnImage;
-    public GameObject wallObject;
-    public GameObject trapObject;
+    public GameObject wallObj;
+    public GameObject trapObj;
+    public GameObject enemyObj;
+    public GameObject winObj;
+    GameObject playerObj;
 
     void Start() {
+        playerObj = GameObject.FindGameObjectWithTag("Player");
         GenerateMap();
     }
 
@@ -16,28 +20,33 @@ public class MapGenScript : MonoBehaviour {
     }
 
     void GenerateMap() {
-        GameObject tempWall = Instantiate(wallObject, Vector3.zero, Quaternion.identity);
+        GameObject tempWall = Instantiate(wallObj, Vector3.zero, Quaternion.identity);
         Vector2 wallSize = tempWall.GetComponent<Collider2D>().bounds.size;
         Debug.Log(wallSize);
         for (int w = 0; w < mapSpawnImage.width; w++) {
             for (int h = 0; h < mapSpawnImage.height; h++) {
                 Vector3 placementPos = new Vector3(w * wallSize.x, h * wallSize.y - mapSpawnImage.height, 0);
                 if (mapSpawnImage.GetPixel(w, h) == Color.black) {
-                    PlaceWall(placementPos);
+                    PlaceObject(placementPos, wallObj);
                 }
-                if (mapSpawnImage.GetPixel(w, h) == Color.red) {
-                    PlaceTrap(placementPos);
+                else if (mapSpawnImage.GetPixel(w, h) == Color.red) {
+                    PlaceObject(placementPos, trapObj);
+                }
+                else if (mapSpawnImage.GetPixel(w, h) == Color.magenta) {
+                    //PlaceObject(placementPos, enemyObj);
+                }
+                else if (mapSpawnImage.GetPixel(w, h) == Color.green) {
+                    //PlaceObject(placementPos, winObj);
+                }
+                else if (mapSpawnImage.GetPixel(w, h) == Color.blue) {
+                    playerObj.transform.position = placementPos;
                 }
             }
         }
         Destroy(tempWall);
     }
 
-    void PlaceWall(Vector3 pos) {
-        Instantiate(wallObject, pos, Quaternion.identity);
-    }
-
-    void PlaceTrap(Vector3 pos) {
-        Instantiate(trapObject, pos, Quaternion.identity);
+    void PlaceObject(Vector3 pos, GameObject obj) {
+        Instantiate(obj, pos, Quaternion.identity);
     }
 }
