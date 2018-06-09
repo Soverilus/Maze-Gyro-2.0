@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostAI : MonoBehaviour {
+    //a reference to every wall in the scene
+    GameObject[] walls;
+
     //velocity multiplier for the ghost's acceleration
     [SerializeField]
     private float velMult;
@@ -21,7 +24,16 @@ public class GhostAI : MonoBehaviour {
     private GameObject target;
 
     void Start() {
+        FindWalls();
         target = GameObject.FindGameObjectWithTag("Player");
+        ghostRB = GetComponent<Rigidbody2D>();
+    }
+
+    void FindWalls() {
+        walls = GameObject.FindGameObjectsWithTag("Wall");
+        for (int i = 0; i < walls.Length; i++) {
+            walls[i].GetComponent<WallColorScript>().FindGhost(gameObject);
+        }
     }
 
     private void FixedUpdate() {
@@ -29,11 +41,19 @@ public class GhostAI : MonoBehaviour {
     }
 
     private void GhostMove() {
-        ghostMove = new Vector2(transform.position.x - target.transform.position.x, transform.position.y - target.transform.position.y).normalized;
-        ghostRB.AddForce(ghostMove);
-        if (ghostRB.velocity.magnitude > maxVel * velMult) {
+        ghostMove = new Vector2(- transform.position.x + target.transform.position.x, - transform.position.y + target.transform.position.y).normalized;
+        ghostRB.AddForce(ghostMove * velMult);
+        if (ghostRB.velocity.magnitude > maxVel) {
             ghostRB.AddForce(ghostRB.velocity.normalized * -velMult);
         }
     }
-}
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == ("Destructible")|| collision.gameObject.tag == ("Wall")) {
+            Destroy(collision.gameObject);
+        }
 
+        if (collision.gameObject.tag == ("Player")) {
+            //function to end game in defeat
+        }
+    }
+}

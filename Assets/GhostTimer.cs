@@ -11,6 +11,10 @@ public class GhostTimer : MonoBehaviour {
     //text reference to the timer
     Text timerText;
 
+    //the gameobject Ghost
+    [SerializeField]
+    private GameObject ghostMachine;
+
     //transform location to spawn the ghost in
     [SerializeField]
     private Vector3 ghostSpawn;
@@ -43,12 +47,13 @@ public class GhostTimer : MonoBehaviour {
         else {
             timerTimeLeft = 0f;
             SpawnGhost();
+            Destroy(gameObject);
         }
     }
 
     void SpawnGhost() {
         if (!spawnedGhost) {
-            //Instantiate(ghostMachine, ghostSpawn, Quaternion.identity);
+            Instantiate(ghostMachine, ghostSpawn, Quaternion.identity);
             Debug.Log("spawn ghost");
         }
         else {
