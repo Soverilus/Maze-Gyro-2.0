@@ -4,9 +4,16 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class DataCubePickup : MonoBehaviour {
-
+    //reference to the score text instance and script
     ScoreDisplay scoreInstance;
+
+    //how much score to add to scoreInstance.
     int scoreAdd;
+
+    //the score multiplier (RECOMMENDED: above 10)
+    [SerializeField]
+    int scoreMult;
+
     GameObject player;
 
     private void Start() {
@@ -27,6 +34,7 @@ public class DataCubePickup : MonoBehaviour {
     }
 
     void SetScore() {
+        //makes the score equal to an int multiplied by the magnitude of the distance to the player
         scoreAdd = 75*Mathf.RoundToInt(Vector2.Distance(transform.position, player.transform.position));
     }
 }

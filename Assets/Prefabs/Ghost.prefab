@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4748468185800614}
   - component: {fileID: 95639049619828784}
-  - component: {fileID: 212074440326340734}
+  - component: {fileID: 212427504135103422}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velMult: 400
   maxVel: 10
---- !u!212 &212074440326340734
+--- !u!212 &212427504135103422
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

@@ -42,13 +42,13 @@ public class GhostTimer : MonoBehaviour {
     void Timer() {
         if (timerTimeLeft > 0f) {
             timerTimeLeft -= Time.deltaTime;
-            timerText.text = timerTimeLeft.ToString("F0");
         }
         else {
             timerTimeLeft = 0f;
             SpawnGhost();
             Destroy(gameObject);
         }
+        timerText.text = timerTimeLeft.ToString("F1");
     }
 
     void SpawnGhost() {
