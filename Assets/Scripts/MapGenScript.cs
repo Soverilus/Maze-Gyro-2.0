@@ -34,7 +34,7 @@ public class MapGenScript : MonoBehaviour {
 
                 //the various placement scripts for objects generated via the spawnImage:
                 if (w == mapSpawnImage.width / 2 && h == mapSpawnImage.height / 2) {
-                    //PlaceObject(placementPos, backgroundObj);
+                    PlaceObject(placementPos, backgroundObj);
                 }
                 if (mapSpawnImage.GetPixel(w, h) == Color.black) {
                     PlaceObject(placementPos, wallObj);
@@ -46,7 +46,7 @@ public class MapGenScript : MonoBehaviour {
                     PlaceObject(placementPos, scoreObj);
                 }
                 else if (mapSpawnImage.GetPixel(w, h) == Color.green) {
-                    //PlaceObject(placementPos, winObj);
+                    PlaceObject(placementPos, winObj);
                 }
                 //move the player to this pixel. only one can exist atm.
                 else if (mapSpawnImage.GetPixel(w, h) == Color.blue) {

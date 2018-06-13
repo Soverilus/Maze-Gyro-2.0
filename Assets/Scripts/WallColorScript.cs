@@ -35,11 +35,11 @@ public class WallColorScript : MonoBehaviour {
 
     void ColorOverDistance() {
         if (Vector2.Distance(transform.position, ghostInst.transform.position) / distModifier < 0.5f) { //checks the Ghost's distance divided by a variable float and whether or not it's under half the distance.
-            wallSPR.color = Color.Lerp(new Color(0.5f, 0f, 0f), Color.magenta, Vector2.Distance(transform.position, ghostInst.transform.position)/10f); //changes the wall's color based on that distance, from Magenta to a dark red.
+            wallSPR.color = Color.Lerp(new Color(0.5f, 0f, 0f), Color.magenta, Vector2.Distance(transform.position, ghostInst.transform.position) / 10f); //changes the wall's color based on that distance, from Magenta to a dark red.
         }
 
         else if (Vector2.Distance(transform.position, ghostInst.transform.position) / distModifier >= 0.5f) { //same as above,except it checks if it's over or equal to half the distance, and changes from cyan to Magenta.
-            wallSPR.color = Color.Lerp(Color.magenta, Color.cyan, Vector2.Distance(transform.position, ghostInst.transform.position)/10f);
+            wallSPR.color = Color.Lerp(Color.magenta, Color.cyan, Vector2.Distance(transform.position, ghostInst.transform.position) / 10f);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementScript : MonoBehaviour {
+    AudioSource ballAudio;
     Rigidbody2D playerRB;
     public float maxVel;
     Vector2 moveInput;
@@ -12,6 +13,7 @@ public class MovementScript : MonoBehaviour {
 
     void Start() {
         playerRB = GetComponent<Rigidbody2D>();
+        ballAudio = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -20,6 +22,7 @@ public class MovementScript : MonoBehaviour {
 
     private void FixedUpdate() {
         PlayerMove();
+        ChangePitch();
     }
 
     private void PlayerMove() {
@@ -35,5 +38,10 @@ public class MovementScript : MonoBehaviour {
         if (playerRB.velocity.magnitude > maxVel) {
             playerRB.AddForce(playerRB.velocity.normalized * -velMult);
         }
+    }
+    void ChangePitch() {
+        ballAudio.volume = (maxVel + playerRB.velocity.magnitude) / maxVel - 1f;
+        ballAudio.pitch = (maxVel + playerRB.velocity.magnitude) / maxVel - 1f;
+        //Debug.Log((maxVel + playerRB.velocity.magnitude) / maxVel);
     }
 }
