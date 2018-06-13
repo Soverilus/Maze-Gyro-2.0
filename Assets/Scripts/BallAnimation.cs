@@ -35,6 +35,6 @@ public class BallAnimation : MonoBehaviour {
 
     void AnimationSpeed() {
         //uses the magnitude of the ball's velocity to determine animation speed and divides it by a number
-        myAnim.speed = playerParentRB.velocity.magnitude / 3;
+        myAnim.speed = playerParentRB.velocity.magnitude / animSpeedDiv;
     }
 }

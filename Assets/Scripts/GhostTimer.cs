@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GhostTimer : MonoBehaviour {
 
+    public AudioFadeOut fadeOut;
     //check to see if we already spawned the ghost in order to disable it later
     bool spawnedGhost = false;
 
@@ -53,6 +54,7 @@ public class GhostTimer : MonoBehaviour {
 
     void SpawnGhost() {
         if (!spawnedGhost) {
+            fadeOut.FadeOut();
             Instantiate(ghostMachine, ghostSpawn, Quaternion.identity);
             Debug.Log("spawn ghost");
         }

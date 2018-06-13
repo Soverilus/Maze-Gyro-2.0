@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 61881650341884674}
   m_Layer: 0
   m_Name: DataCube
-  m_TagString: Destructible
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

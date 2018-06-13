@@ -7,6 +7,7 @@ TagManager:
   - ScoreDisplay
   - Destructible
   - Wall
+  - Pickup
   layers:
   - Default
   - TransparentFX

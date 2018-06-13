@@ -50,7 +50,7 @@ public class GhostAI : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         //if something is either Destructible or a Wall, simply destroy it.
-        if (collision.gameObject.tag == ("Destructible")|| collision.gameObject.tag == ("Wall")) {
+        if (collision.gameObject.tag == ("Destructible")|| collision.gameObject.tag == ("Wall") || collision.gameObject.tag == ("Pickup")) {
             Destroy(collision.gameObject);
         }
 
