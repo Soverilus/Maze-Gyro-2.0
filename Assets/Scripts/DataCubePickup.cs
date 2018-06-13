@@ -35,6 +35,6 @@ public class DataCubePickup : MonoBehaviour {
 
     void SetScore() {
         //makes the score equal to an int multiplied by the magnitude of the distance to the player
-        scoreAdd = 75*Mathf.RoundToInt(Vector2.Distance(transform.position, player.transform.position));
+        scoreAdd = 75 * Mathf.RoundToInt(Vector2.Distance(transform.position, player.transform.position));
     }
 }
