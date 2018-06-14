@@ -26,10 +26,10 @@ public class RainbowVictory : MonoBehaviour {
 
     void Update() {
         //CurrentTargetColorParse();
-        RainbowColorChange(currentTargetColor);
+        //RainbowColorChange(currentTargetColor);
     }
 
-    void RainbowColorChange(Color color) {
+    /*void RainbowColorChange(Color color) {
         CurrentTargetColorParse();
         timer += Time.deltaTime * timerMult;
         mySPR.color = Color.Lerp(mySPR.color, color, timer);
@@ -78,6 +78,11 @@ public class RainbowVictory : MonoBehaviour {
         }
         if (rainbowSect >= 12) {
             rainbowSect = 0;
+        }
+    }*/
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == ("Player")) {
+            //do victory
         }
     }
 }
