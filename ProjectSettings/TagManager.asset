@@ -48,6 +48,12 @@ TagManager:
   - name: Victory
     uniqueID: 4088874213
     locked: 0
+  - name: Particles
+    uniqueID: 526736791
+    locked: 0
+  - name: Sprites
+    uniqueID: 235441465
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
