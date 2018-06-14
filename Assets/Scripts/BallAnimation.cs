@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
+
 public class BallAnimation : MonoBehaviour {
     //number to divide the magnitude of the ball by to set the animation speed
     [SerializeField]
