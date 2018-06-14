@@ -14,6 +14,8 @@ public class MapGenScript : MonoBehaviour {
     public GameObject scoreObj;
     GameObject playerObj;
 
+    //public GameObject[] myWalls;
+
     void Start() {
         playerObj = GameObject.FindGameObjectWithTag("Player");
         GenerateMap();

@@ -564,7 +564,7 @@ MonoBehaviour:
     type: 2}
   ghostSpawn: {x: 0, y: 0, z: 0}
   timerTimeLeft: 1
-  initTime: 120
+  initTime: 180
 --- !u!114 &1491141387
 MonoBehaviour:
   m_ObjectHideFlags: 0
