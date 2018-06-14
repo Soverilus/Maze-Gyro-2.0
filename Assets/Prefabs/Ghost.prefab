@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62d40ae8faba9d4f8658fb8a3dd5bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostDamage: 15
   checkDist: 5
   velMult: 400
   maxVel: 10

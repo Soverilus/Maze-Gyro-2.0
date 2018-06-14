@@ -8,6 +8,10 @@ TagManager:
   - Destructible
   - Wall
   - Pickup
+  - ShowOnLose
+  - ShowOnWin
+  - ShowOnPause
+  - WinLose
   layers:
   - Default
   - TransparentFX

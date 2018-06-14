@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostAI : MonoBehaviour {
+
+    public float ghostDamage;
     //editor use for ghost check radius and color change percentile
     public float checkDist;
-    
+
     //a reference to every wall in the scene
     GameObject[] walls;
 
@@ -27,16 +29,16 @@ public class GhostAI : MonoBehaviour {
     private GameObject target;
 
     void Start() {
-        
+
         //finds the player to make it the ghost's target
         target = GameObject.FindGameObjectWithTag("Player");
         ghostRB = GetComponent<Rigidbody2D>();
     }
 
     void FindWalls() { //finds all of the walls and activates their FindGhost function to parse itself to them.
-       // walls = GameObject.FindGameObjectsWithTag("Wall");
+                       // walls = GameObject.FindGameObjectsWithTag("Wall");
         Collider2D[] myObjects = Physics2D.OverlapCircleAll(transform.position, checkDist);
-        
+
         for (int i = 0; i < myObjects.Length; i++) {
             if (myObjects[i].tag == "Wall") {
                 SpriteRenderer wallSPR = myObjects[i].GetComponent<SpriteRenderer>();
@@ -58,7 +60,7 @@ public class GhostAI : MonoBehaviour {
     }
 
     private void GhostMove() { //uses the same physics as MovementScript to move the Ghost, albeit with it's input always being the direction to the ball (to a total magnitude of 1)
-        ghostMove = new Vector2(- transform.position.x + target.transform.position.x, - transform.position.y + target.transform.position.y).normalized;
+        ghostMove = new Vector2(-transform.position.x + target.transform.position.x, -transform.position.y + target.transform.position.y).normalized;
         ghostRB.AddForce(ghostMove * velMult);
         if (ghostRB.velocity.magnitude > maxVel) {
             ghostRB.AddForce(ghostRB.velocity.normalized * -velMult);
@@ -67,14 +69,13 @@ public class GhostAI : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision) {
         //if something is either Destructible or a Wall, simply destroy it.
-        if (collision.gameObject.tag == ("Destructible")|| collision.gameObject.tag == ("Wall") || collision.gameObject.tag == ("Pickup")) {
+        if (collision.gameObject.tag == ("Destructible") || collision.gameObject.tag == ("Wall") || collision.gameObject.tag == ("Pickup")) {
             Destroy(collision.gameObject);
         }
 
         //ends the game in Defeat, quarter score.
         if (collision.gameObject.tag == ("Player")) {
-           // collision.gameObject.
-            //function to end game in defeat
+            collision.gameObject.GetComponent<PlayerHealth>().LoseHealth(ghostDamage * Time.deltaTime);
         }
     }
 }

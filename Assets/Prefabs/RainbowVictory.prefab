@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b70bf32f292a141a047651597924dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endGame: {fileID: 0}
   winLose: {fileID: 0}
   timerMult: 1
   timerCount: 0.5
@@ -114,9 +115,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -206093083
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e402753f33f40924ab24f3422e004553, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c07b717272dfdff45a74f46753f83944, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

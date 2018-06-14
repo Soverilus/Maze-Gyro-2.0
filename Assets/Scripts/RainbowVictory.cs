@@ -5,7 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.Sprites;
 
 public class RainbowVictory : MonoBehaviour {
-    SpriteRenderer mySPR;
+    //SpriteRenderer mySPR;
+
+    WinLoseScript endGame;
 
     [SerializeField]
     Canvas winLose;
@@ -15,13 +17,13 @@ public class RainbowVictory : MonoBehaviour {
 
     [SerializeField]
     float timerCount;
-    float timer = 0f;
-    int rainbowSect = 0;
+    //float timer = 0f;
+    //int rainbowSect = 0;
     Color currentTargetColor;
 
     void Start() {
-        mySPR = GetComponent<SpriteRenderer>();
-
+        //mySPR = GetComponent<SpriteRenderer>();
+        endGame = GameObject.FindGameObjectWithTag("WinLose").GetComponent<WinLoseScript>(); ;
     }
 
     void Update() {
@@ -82,7 +84,7 @@ public class RainbowVictory : MonoBehaviour {
     }*/
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == ("Player")) {
-            //do victory
+            endGame.Win();
         }
     }
 }
