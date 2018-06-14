@@ -18,13 +18,16 @@ public class PauseScript : MonoBehaviour {
 
     void Update() {
 
-        //uses the p button to pause and unpause the game
         if (SystemInfo.supportsAccelerometer) {
             if (Input.touchCount > 0) {
-                if (Time.timeScale == 1) {
-                    Time.timeScale = 0;
-                    ShowPaused();
-                    //shows the cursor during pause
+                foreach (Touch touch in Input.touches) {
+                    if (touch.phase == TouchPhase.Began) {
+                        if (Time.timeScale == 1) {
+                            Time.timeScale = 0;
+                            ShowPaused();
+                            //shows the cursor during pause
+                        }
+                    }
                 }
             }
         }
@@ -72,8 +75,12 @@ public class PauseScript : MonoBehaviour {
             Time.timeScale = 1;
             AudioListener.volume = 1f;
         }
-        foreach (GameObject g in pauseObjects) {
-            g.SetActive(false);
+        foreach (Touch touch in Input.touches) {
+            if (touch.phase == TouchPhase.Ended) {
+                foreach (GameObject g in pauseObjects) {
+                    g.SetActive(false);
+                }
+            }
         }
     }
 
