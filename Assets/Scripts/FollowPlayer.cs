@@ -6,11 +6,12 @@ public class FollowPlayer : MonoBehaviour {
     public GameObject targetObject;
     Vector3 targetPos;
 
-    void Start() {
-        
+    void Update() {
+        CamFollow();
     }
 
-    void Update() {
+    private void CamFollow() {
+        //makes the camera's position the player's
         targetPos = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y, -10);
         transform.position = targetPos;
     }

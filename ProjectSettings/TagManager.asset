@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ScoreDisplay
+  - Destructible
+  - Wall
+  - Pickup
+  - ShowOnLose
+  - ShowOnWin
+  - ShowOnPause
+  - WinLose
   layers:
   - Default
   - TransparentFX
@@ -38,6 +46,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1640980933
+    locked: 0
+  - name: Victory
+    uniqueID: 4088874213
+    locked: 0
+  - name: Particles
+    uniqueID: 526736791
+    locked: 0
+  - name: Sprites
+    uniqueID: 235441465
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
