@@ -29,7 +29,7 @@ public class MovementScript : MonoBehaviour {
         //moves the player based on tilt of android, or, if no accelerometer exists, uses keyboard or controller controls. multiplies movement and clamps to a maximum.
         //moveInputRaw = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (SystemInfo.supportsAccelerometer) {
-            moveInput = new Vector2(Mathf.Clamp(Input.acceleration.x * sensitivity, -1, 1), Mathf.Clamp(Input.acceleration.y * sensitivity, -1, 1));
+            moveInput = new Vector2(Mathf.Clamp(Input.acceleration.x * sensitivity, -1.25f, 1.25f), Mathf.Clamp(Input.acceleration.y * sensitivity, -1.25f, 1.25f));
         }
         else {
             moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));

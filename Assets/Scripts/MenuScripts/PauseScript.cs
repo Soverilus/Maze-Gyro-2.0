@@ -18,13 +18,15 @@ public class PauseScript : MonoBehaviour {
 
     void Update() {
 
-        //uses the p button to pause and unpause the game
         if (SystemInfo.supportsAccelerometer) {
             if (Input.touchCount > 0) {
-                if (Time.timeScale == 1) {
-                    Time.timeScale = 0;
-                    ShowPaused();
-                    //shows the cursor during pause
+                foreach (Touch touch in Input.touches) {
+                    if (touch.phase == TouchPhase.Began) {
+                        if (Time.timeScale == 1) {
+                            Time.timeScale = 0;
+                            ShowPaused();
+                        }
+                    }
                 }
             }
         }
@@ -32,32 +34,14 @@ public class PauseScript : MonoBehaviour {
             if (Time.timeScale == 1) {
                 Time.timeScale = 0;
                 ShowPaused();
-                //shows the cursor during pause
             }
         }
-
     }
 
-
-    //Reloads the Level
     public void Reload() {
-        //Application.LoadLevel(Application.loadedLevel);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //controls the pausing of the scene
-    /*void pauseControl() {
-        if (Time.timeScale == 1) {
-            Time.timeScale = 0;
-            showPaused();
-        }
-        else if (Time.timeScale == 0) {
-            Time.timeScale = 1;
-            hidePaused();
-        }
-    }*/
-
-    //shows objects with ShowOnPause tag
     public void ShowPaused() {
         foreach (GameObject g in pauseObjects) {
             g.SetActive(true);
@@ -65,26 +49,24 @@ public class PauseScript : MonoBehaviour {
         }
     }
 
-    //hides objects with ShowOnPause tag
     public void HidePaused() {
         if (Time.timeScale == 0) {
-            //Debug.Log("high");
             Time.timeScale = 1;
             AudioListener.volume = 1f;
         }
-        foreach (GameObject g in pauseObjects) {
-            g.SetActive(false);
+        if (SystemInfo.supportsAccelerometer) {
+            foreach (Touch touch in Input.touches) {
+                if (touch.phase == TouchPhase.Ended) {
+                    foreach (GameObject g in pauseObjects) {
+                        g.SetActive(false);
+                    }
+                }
+            }
+        }
+        else {
+            foreach (GameObject g in pauseObjects) {
+                g.SetActive(false);
+            }
         }
     }
-
-
-    /*//Pauses the game
-    void Pause() {
-        Time.timeScale = 0;
-    }
-    //Unpauses the game
-    void Unpause() {
-        Time.timeScale = 1;
-    }*/
-
 }

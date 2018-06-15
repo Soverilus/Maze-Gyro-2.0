@@ -75,7 +75,7 @@ public class GhostAI : MonoBehaviour {
 
         //ends the game in Defeat, quarter score.
         if (collision.gameObject.tag == ("Player")) {
-            collision.gameObject.GetComponent<PlayerHealth>().LoseHealth(ghostDamage * Time.deltaTime);
+            collision.gameObject.GetComponent<PlayerHealth>().LoseHealth(ghostDamage);
         }
     }
 }
