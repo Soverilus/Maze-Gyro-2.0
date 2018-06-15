@@ -19,6 +19,6 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
     public void LoseHealth(float damage) {
-        playerHealth -= damage;
+        playerHealth -= damage * Time.deltaTime;
     }
 }
